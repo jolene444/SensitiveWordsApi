@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Sanitize": {
+    "/api/Sanitize/SanitizeText": {
       "post": {
         "tags": [
           "Sanitize"
@@ -37,22 +37,14 @@
         "deprecated": true
       }
     },
-    "/api/SensitiveWords": {
-      "get": {
-        "tags": [
-          "SensitiveWords"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
+    "/api/SensitiveWords/Add": {
       "post": {
         "tags": [
           "SensitiveWords"
         ],
+        "summary": "Adds a new sensitive word to the list.",
         "requestBody": {
+          "description": "The word to add. Must be unique and non-empty.",
           "content": {
             "application/json": {
               "schema": {
@@ -78,15 +70,30 @@
         }
       }
     },
-    "/api/SensitiveWords/{id}": {
+    "/api/SensitiveWords/GetAll": {
+      "get": {
+        "tags": [
+          "SensitiveWords"
+        ],
+        "summary": "Retrieves all sensitive words in the list.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SensitiveWords/Update/{id}": {
       "put": {
         "tags": [
           "SensitiveWords"
         ],
+        "summary": "Updates an existing sensitive word by its ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "The ID of the word to update.",
             "required": true,
             "schema": {
               "type": "integer",
@@ -95,6 +102,7 @@
           }
         ],
         "requestBody": {
+          "description": "The new value for the word. Must be unique and non-empty.",
           "content": {
             "application/json": {
               "schema": {
@@ -118,15 +126,19 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/SensitiveWords/Delete/{id}": {
       "delete": {
         "tags": [
           "SensitiveWords"
         ],
+        "summary": "Deletes a sensitive word by its ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "The ID of the word to delete.",
             "required": true,
             "schema": {
               "type": "integer",

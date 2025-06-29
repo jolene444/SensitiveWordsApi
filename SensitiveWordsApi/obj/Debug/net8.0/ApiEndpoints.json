@@ -2,7 +2,7 @@
   {
     "ContainingType": "SensitiveWordsApi.Controllers.SanitizeController",
     "Method": "SanitizeText",
-    "RelativePath": "api/Sanitize",
+    "RelativePath": "api/Sanitize/SanitizeText",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -17,18 +17,8 @@
   },
   {
     "ContainingType": "SensitiveWordsApi.Controllers.SensitiveWordsController",
-    "Method": "GetAll",
-    "RelativePath": "api/SensitiveWords",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SensitiveWordsApi.Controllers.SensitiveWordsController",
     "Method": "Add",
-    "RelativePath": "api/SensitiveWords",
+    "RelativePath": "api/SensitiveWords/Add",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -43,8 +33,34 @@
   },
   {
     "ContainingType": "SensitiveWordsApi.Controllers.SensitiveWordsController",
+    "Method": "Delete",
+    "RelativePath": "api/SensitiveWords/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SensitiveWordsApi.Controllers.SensitiveWordsController",
+    "Method": "GetAll",
+    "RelativePath": "api/SensitiveWords/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SensitiveWordsApi.Controllers.SensitiveWordsController",
     "Method": "Update",
-    "RelativePath": "api/SensitiveWords/{id}",
+    "RelativePath": "api/SensitiveWords/Update/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -57,22 +73,6 @@
       {
         "Name": "newWord",
         "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SensitiveWordsApi.Controllers.SensitiveWordsController",
-    "Method": "Delete",
-    "RelativePath": "api/SensitiveWords/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

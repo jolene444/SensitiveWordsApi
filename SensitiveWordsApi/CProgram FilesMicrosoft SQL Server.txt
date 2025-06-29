@@ -1,0 +1,5 @@
+C:\Program Files\Microsoft SQL Server
+
+
+connection string 
+Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;

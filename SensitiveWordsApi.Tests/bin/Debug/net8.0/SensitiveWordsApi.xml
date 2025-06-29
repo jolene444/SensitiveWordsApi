@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SensitiveWordsApi</name>
+    </assembly>
+    <members>
+        <member name="T:SensitiveWordsApi.Controllers.SensitiveWordsController">
+            <summary>
+            API Controller for managing sensitive words.
+            Provides endpoints to add, retrieve, update, and delete sensitive words.
+            </summary>
+        </member>
+        <member name="M:SensitiveWordsApi.Controllers.SensitiveWordsController.#ctor(SensitiveWordsApi.Repositories.ISensitiveWordsRepository)">
+            <summary>
+            Constructor that injects the sensitive words repository.
+            </summary>
+            <param name="repo">Repository for sensitive words.</param>
+        </member>
+        <member name="M:SensitiveWordsApi.Controllers.SensitiveWordsController.Add(System.String)">
+            <summary>
+            Adds a new sensitive word to the list.
+            </summary>
+            <param name="word">The word to add. Must be unique and non-empty.</param>
+            <returns>
+            200 OK with the new word's ID if successful.
+            409 Conflict if the word already exists.
+            500 Internal Server Error if an unhandled error occurs.
+            </returns>
+        </member>
+        <member name="M:SensitiveWordsApi.Controllers.SensitiveWordsController.GetAll">
+            <summary>
+            Retrieves all sensitive words in the list.
+            </summary>
+            <returns>
+            200 OK with a list of all sensitive words.
+            500 Internal Server Error if an unhandled error occurs.
+            </returns>
+        </member>
+        <member name="M:SensitiveWordsApi.Controllers.SensitiveWordsController.Update(System.Int32,System.String)">
+            <summary>
+            Updates an existing sensitive word by its ID.
+            </summary>
+            <param name="id">The ID of the word to update.</param>
+            <param name="newWord">The new value for the word. Must be unique and non-empty.</param>
+            <returns>
+            200 OK if the update is successful.
+            404 Not Found if the word with the given ID does not exist.
+            409 Conflict if the new word already exists.
+            500 Internal Server Error if an unhandled error occurs.
+            </returns>
+        </member>
+        <member name="M:SensitiveWordsApi.Controllers.SensitiveWordsController.Delete(System.Int32)">
+            <summary>
+            Deletes a sensitive word by its ID.
+            </summary>
+            <param name="id">The ID of the word to delete.</param>
+            <returns>
+            200 OK if the deletion is successful.
+            404 Not Found if the word with the given ID does not exist.
+            500 Internal Server Error if an unhandled error occurs.
+            </returns>
+        </member>
+    </members>
+</doc>

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensitiveWordsApi", "SensitiveWordsApi\SensitiveWordsApi.csproj", "{BBBCA2A0-F5FD-4536-BD62-54E6A51BFCCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensitiveWordsApi.Tests", "SensitiveWordsApi.Tests\SensitiveWordsApi.Tests.csproj", "{1573DEB1-987B-4E0D-A8BA-C48F44B1B6D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BBBCA2A0-F5FD-4536-BD62-54E6A51BFCCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBBCA2A0-F5FD-4536-BD62-54E6A51BFCCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBBCA2A0-F5FD-4536-BD62-54E6A51BFCCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1573DEB1-987B-4E0D-A8BA-C48F44B1B6D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1573DEB1-987B-4E0D-A8BA-C48F44B1B6D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1573DEB1-987B-4E0D-A8BA-C48F44B1B6D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1573DEB1-987B-4E0D-A8BA-C48F44B1B6D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

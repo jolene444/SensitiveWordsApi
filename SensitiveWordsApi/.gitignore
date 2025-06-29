@@ -13,3 +13,9 @@ obj/
 
 # Dotnet watch
 .dotnetwatch/
+
+# Visual Studio cache/files to ignore
+.vs/
+*.db
+*.cache
+*.log

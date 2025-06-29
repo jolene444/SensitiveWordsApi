@@ -145,10 +145,12 @@ C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.
 C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\Sensitiv.21AE17F2.Up2Date
 C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\SensitiveWordsApi.dll
 C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\refint\SensitiveWordsApi.dll
 C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\SensitiveWordsApi.pdb
 C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\SensitiveWordsApi.genruntimeconfig.cache
 C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\ref\SensitiveWordsApi.dll
+C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\bin\Debug\net8.0\SensitiveWordsApi.xml
+C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\SensitiveWordsApi.xml
+C:\Users\Jolene\source\repos\SensitiveWordsApi\SensitiveWordsApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
