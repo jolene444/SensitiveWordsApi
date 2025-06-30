@@ -4,60 +4,199 @@
         <name>SensitiveWordsApi</name>
     </assembly>
     <members>
+        <member name="T:SensitiveWordsApi.Controllers.SanitizeRequest">
+            <summary>
+            Request body model for the sanitize endpoint.
+            </summary>
+        </member>
+        <member name="P:SensitiveWordsApi.Controllers.SanitizeRequest.Text">
+            <summary>
+            The input text to sanitize.
+            </summary>
+        </member>
+        <member name="T:SensitiveWordsApi.Controllers.SanitizeController">
+            <summary>
+            API controller for sanitizing input strings using sensitive words.
+            </summary>
+        </member>
+        <member name="M:SensitiveWordsApi.Controllers.SanitizeController.#ctor(SensitiveWordsApi.Repositories.ISensitiveWordsRepository)">
+            <summary>
+            Gets repository via Dependency Injection.
+            </summary>
+        </member>
+        <member name="M:SensitiveWordsApi.Controllers.SanitizeController.SanitizeText(SensitiveWordsApi.Controllers.SanitizeRequest)">
+            <summary>
+            Sanitizes the provided text by replacing all sensitive words
+            (found in the database) with asterisks of the same length.
+            </summary>
+            <param name="req">Object containing the text to sanitize.</param>
+            <returns>Sanitized text (with sensitive words masked).</returns>
+        </member>
+        <member name="M:SensitiveWordsApi.Controllers.SanitizeController.Sanitize(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Helper method that replaces each sensitive word in input
+            with asterisks (****), preserving length, case-insensitive.
+            </summary>
+            <param name="input">Text to scan and sanitize.</param>
+            <param name="words">List of sensitive words to match.</param>
+            <returns>Sanitized text string.</returns>
+        </member>
         <member name="T:SensitiveWordsApi.Controllers.SensitiveWordsController">
             <summary>
-            API Controller for managing sensitive words.
-            Provides endpoints to add, retrieve, update, and delete sensitive words.
+            API controller for managing sensitive words (CRUD).
             </summary>
         </member>
         <member name="M:SensitiveWordsApi.Controllers.SensitiveWordsController.#ctor(SensitiveWordsApi.Repositories.ISensitiveWordsRepository)">
             <summary>
-            Constructor that injects the sensitive words repository.
+            Controller uses dependency injection to get the repository.
             </summary>
-            <param name="repo">Repository for sensitive words.</param>
         </member>
         <member name="M:SensitiveWordsApi.Controllers.SensitiveWordsController.Add(System.String)">
             <summary>
-            Adds a new sensitive word to the list.
+            Add a new sensitive word (string body, must be unique).
             </summary>
-            <param name="word">The word to add. Must be unique and non-empty.</param>
-            <returns>
-            200 OK with the new word's ID if successful.
-            409 Conflict if the word already exists.
-            500 Internal Server Error if an unhandled error occurs.
-            </returns>
+            <param name="word">The word to add.</param>
+            <returns>Returns 200 with new ID, or 409 if duplicate.</returns>
         </member>
         <member name="M:SensitiveWordsApi.Controllers.SensitiveWordsController.GetAll">
             <summary>
-            Retrieves all sensitive words in the list.
+            Get all sensitive words (now returns list of objects with ID and Word).
             </summary>
-            <returns>
-            200 OK with a list of all sensitive words.
-            500 Internal Server Error if an unhandled error occurs.
-            </returns>
         </member>
         <member name="M:SensitiveWordsApi.Controllers.SensitiveWordsController.Update(System.Int32,System.String)">
             <summary>
-            Updates an existing sensitive word by its ID.
+            Update an existing sensitive word by ID.
             </summary>
-            <param name="id">The ID of the word to update.</param>
-            <param name="newWord">The new value for the word. Must be unique and non-empty.</param>
-            <returns>
-            200 OK if the update is successful.
-            404 Not Found if the word with the given ID does not exist.
-            409 Conflict if the new word already exists.
-            500 Internal Server Error if an unhandled error occurs.
-            </returns>
+            <param name="id">The ID to update.</param>
+            <param name="newWord">The new word value.</param>
         </member>
         <member name="M:SensitiveWordsApi.Controllers.SensitiveWordsController.Delete(System.Int32)">
             <summary>
+            Delete a sensitive word by ID.
+            </summary>
+            <param name="id">The ID to delete.</param>
+        </member>
+        <member name="T:SensitiveWordsApi.Models.SensitiveWord">
+            <summary>
+            Represents a sensitive word record as stored in the database.
+            </summary>
+        </member>
+        <member name="P:SensitiveWordsApi.Models.SensitiveWord.Id">
+            <summary>
+            The unique identifier for the sensitive word.
+            </summary>
+        </member>
+        <member name="P:SensitiveWordsApi.Models.SensitiveWord.Word">
+            <summary>
+            The sensitive word itself.
+            </summary>
+        </member>
+        <member name="T:SensitiveWordsApi.Repositories.ISensitiveWordsRepository">
+            <summary>
+            Interface for managing sensitive words in the database.
+            Defines all CRUD operations (Create, Read, Update, Delete).
+            </summary>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.ISensitiveWordsRepository.AddAsync(System.String)">
+            <summary>
+            Adds a new sensitive word to the database.
+            </summary>
+            <param name="word">The word to add. Must be unique, enforced by the DB.</param>
+            <returns>The new record's ID as an integer.</returns>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.ISensitiveWordsRepository.GetAllAsync">
+            <summary>
+            Retrieves all sensitive words from the database.
+            </summary>
+            <returns>
+            A list of SensitiveWord objects, each containing both the unique ID and the word.
+            Useful for UI, auditing, or for referencing by ID for update/delete.
+            </returns>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.ISensitiveWordsRepository.UpdateAsync(System.Int32,System.String)">
+            <summary>
+            Updates an existing sensitive word by its database ID.
+            </summary>
+            <param name="id">The unique ID of the word to update.</param>
+            <param name="newWord">The new value for the word.</param>
+            <returns>True if an update occurred, false if no matching record was found.</returns>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.ISensitiveWordsRepository.DeleteAsync(System.Int32)">
+            <summary>
+            Deletes a sensitive word by its database ID.
+            </summary>
+            <param name="id">The unique ID of the word to delete.</param>
+            <returns>True if deleted, false if not found.</returns>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.ISensitiveWordsRepository.DeleteByWordAsync(System.String)">
+            <summary>
+            Deletes a sensitive word by its text value.
+            </summary>
+            <param name="word">The word to delete (case-insensitive, must match exactly).</param>
+            <returns>True if deleted, false if not found.</returns>
+        </member>
+        <member name="T:SensitiveWordsApi.Repositories.SensitiveWordsRepository">
+            <summary>
+            Implementation of the ISensitiveWordsRepository using ADO.NET for direct SQL access.
+            </summary>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.SensitiveWordsRepository.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Gets the DB connection string from configuration (Dependency Injection).
+            </summary>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.SensitiveWordsRepository.AddAsync(System.String)">
+            <summary>
+            Adds a new sensitive word to the database and returns the new record's ID.
+            </summary>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.SensitiveWordsRepository.GetAllAsync">
+            <summary>
+            Gets all sensitive words from the database, including their IDs.
+            </summary>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.SensitiveWordsRepository.UpdateAsync(System.Int32,System.String)">
+            <summary>
+            Updates a sensitive word by its ID.
+            </summary>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.SensitiveWordsRepository.DeleteAsync(System.Int32)">
+            <summary>
             Deletes a sensitive word by its ID.
             </summary>
-            <param name="id">The ID of the word to delete.</param>
+        </member>
+        <member name="M:SensitiveWordsApi.Repositories.SensitiveWordsRepository.DeleteByWordAsync(System.String)">
+            <summary>
+            Deletes a sensitive word by its text value.
+            </summary>
+        </member>
+        <member name="T:SensitiveWordsApi.Services.SensitiveWordSanitizer">
+            <summary>
+            Service to sanitize input text by masking sensitive words using regex for word boundaries.
+            This design is stateless: the sensitive words list is passed in when needed,
+            ensuring the latest DB values are always used.
+            </summary>
+        </member>
+        <member name="M:SensitiveWordsApi.Services.SensitiveWordSanitizer.SanitizeText(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Replaces each sensitive word in the input with asterisks, matching whole words only.
+            
+            Why this design?
+            - Passing sensitiveWords as a parameter ensures the up-to-date list from the DB.
+            - Stateless design (no member fields) makes this class safe for use across requests/services.
+            - Regex with word boundaries (\b) only replaces whole words, not substrings inside other words.
+            - RegexOptions.IgnoreCase ensures that replacements are case-insensitive ("Secret", "secret", "SECRET" all match).
+            
+            Example:
+            Input:  "You need to create a string"
+            Words:  [ "create" ]
+            Output: "You need to ****** a string"
+            </summary>
+            <param name="input">The original input string to be sanitized.</param>
+            <param name="sensitiveWords">A list of words to search for and mask.</param>
             <returns>
-            200 OK if the deletion is successful.
-            404 Not Found if the word with the given ID does not exist.
-            500 Internal Server Error if an unhandled error occurs.
+            The sanitized string, with sensitive words replaced by asterisks of the same length.
+            Returns the original input if no sensitive words found or if input is empty.
             </returns>
         </member>
     </members>

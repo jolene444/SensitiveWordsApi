@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SensitiveWordsApi.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1dfbe26c50c0a24227c6c9ad65aa321f9e0ba883")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7cb7845b03f1728f2e489458a7bd8af64d653257")]
 [assembly: System.Reflection.AssemblyProductAttribute("SensitiveWordsApi.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SensitiveWordsApi.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

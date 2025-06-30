@@ -10,14 +10,14 @@
         "projectUniqueName": "C:\\Users\\Jolene\\source\\repos\\SensitiveWordsApi\\SensitiveWordsApi.Tests\\SensitiveWordsApi.Tests.csproj",
         "projectName": "SensitiveWordsApi.Tests",
         "projectPath": "C:\\Users\\Jolene\\source\\repos\\SensitiveWordsApi\\SensitiveWordsApi.Tests\\SensitiveWordsApi.Tests.csproj",
-        "packagesPath": "C:\\Users\\JoleneBassett\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Jolene\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Jolene\\source\\repos\\SensitiveWordsApi\\SensitiveWordsApi.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\JoleneBassett\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jolene\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -102,14 +102,14 @@
         "projectUniqueName": "C:\\Users\\Jolene\\source\\repos\\SensitiveWordsApi\\SensitiveWordsApi\\SensitiveWordsApi.csproj",
         "projectName": "SensitiveWordsApi",
         "projectPath": "C:\\Users\\Jolene\\source\\repos\\SensitiveWordsApi\\SensitiveWordsApi\\SensitiveWordsApi.csproj",
-        "packagesPath": "C:\\Users\\JoleneBassett\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Jolene\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Jolene\\source\\repos\\SensitiveWordsApi\\SensitiveWordsApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\JoleneBassett\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jolene\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

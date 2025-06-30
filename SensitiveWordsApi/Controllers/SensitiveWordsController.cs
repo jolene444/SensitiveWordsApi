@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SensitiveWordsApi.Repositories;
+using SensitiveWordsApi.Models;
+using System.Data.SqlClient;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace SensitiveWordsApi.Controllers
 {
     /// <summary>
-    /// Controller for managing sensitive words (CRUD operations).
-    /// This is used to add, list, update, or delete sensitive words in the system.
+    /// API controller for managing sensitive words (CRUD).
     /// </summary>
     [ApiController]
     [Route("api/[controller]/[action]")]
@@ -14,8 +17,7 @@ namespace SensitiveWordsApi.Controllers
         private readonly ISensitiveWordsRepository _repo;
 
         /// <summary>
-        /// Constructor that receives the repository via Dependency Injection.
-        /// This allows us to change how words are stored without changing controller code.
+        /// Controller uses dependency injection to get the repository.
         /// </summary>
         public SensitiveWordsController(ISensitiveWordsRepository repo)
         {
@@ -23,33 +25,32 @@ namespace SensitiveWordsApi.Controllers
         }
 
         /// <summary>
-        /// Adds a new sensitive word to the list.
+        /// Add a new sensitive word (string body, must be unique).
         /// </summary>
-        /// <param name="word">The word to add. Must be unique.</param>
-        /// <returns>200 OK with the new word's ID, or 409 Conflict if the word exists.</returns>
+        /// <param name="word">The word to add.</param>
+        /// <returns>Returns 200 with new ID, or 409 if duplicate.</returns>
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] string word)
         {
             try
             {
                 var id = await _repo.AddAsync(word);
-                return Ok(id); // Success: return the new record's ID
+                return Ok(id);
             }
-            catch (System.Data.SqlClient.SqlException ex) when (ex.Number == 2627) // Unique constraint violation
+            catch (SqlException ex) when (ex.Number == 2627)
             {
+                // Unique key violation
                 return Conflict("That word already exists in the sensitive words list.");
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                // General error: Return as server error
                 return StatusCode(500, ex.Message);
             }
         }
 
         /// <summary>
-        /// Gets a list of all sensitive words.
+        /// Get all sensitive words (now returns list of objects with ID and Word).
         /// </summary>
-        /// <returns>200 OK with a list of all sensitive words.</returns>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -58,18 +59,17 @@ namespace SensitiveWordsApi.Controllers
                 var words = await _repo.GetAllAsync();
                 return Ok(words);
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
         }
 
         /// <summary>
-        /// Updates a sensitive word by ID.
+        /// Update an existing sensitive word by ID.
         /// </summary>
-        /// <param name="id">The unique ID of the word to update.</param>
-        /// <param name="newWord">The new value for the word.</param>
-        /// <returns>200 OK if successful, 404 if not found, or 409 if newWord is duplicate.</returns>
+        /// <param name="id">The ID to update.</param>
+        /// <param name="newWord">The new word value.</param>
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] string newWord)
         {
@@ -78,21 +78,20 @@ namespace SensitiveWordsApi.Controllers
                 var updated = await _repo.UpdateAsync(id, newWord);
                 return updated ? Ok() : NotFound();
             }
-            catch (System.Data.SqlClient.SqlException ex) when (ex.Number == 2627)
+            catch (SqlException ex) when (ex.Number == 2627)
             {
                 return Conflict("That word already exists in the sensitive words list.");
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
         }
 
         /// <summary>
-        /// Deletes a sensitive word by ID.
+        /// Delete a sensitive word by ID.
         /// </summary>
-        /// <param name="id">The unique ID of the word to delete.</param>
-        /// <returns>200 OK if deleted, 404 if not found.</returns>
+        /// <param name="id">The ID to delete.</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -101,23 +100,10 @@ namespace SensitiveWordsApi.Controllers
                 var deleted = await _repo.DeleteAsync(id);
                 return deleted ? Ok() : NotFound();
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
         }
-
-        /// <summary>
-        /// Deletes a sensitive word by the word itself.
-        /// </summary>
-        /// <param name="word">The word to delete.</param>
-        /// <returns>200 OK if deleted, 404 if not found.</returns>
-        [HttpDelete("ByWord/{word}")]
-        public async Task<IActionResult> DeleteByWord(string word)
-        {
-            var deleted = await _repo.DeleteByWordAsync(word);
-            return deleted ? Ok() : NotFound();
-        }
-
     }
 }
